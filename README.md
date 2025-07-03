@@ -1,6 +1,8 @@
 # Lectionary Calculator & Calendar
 
-Modified from the original [lectionary-js repo by Stan Lemon](https://github.com/stanlemon/lectionary-js).
+Source for [https://lectionary.christlutheranmanhattan.org](https://lectionary.christlutheranmanhattan.org).
+
+Modified from the original [lectionary-js library and app by Stan Lemon](https://github.com/stanlemon/lectionary-js).
 
 ## Getting Started
 
