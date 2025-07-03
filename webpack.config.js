@@ -6,7 +6,11 @@ export default {
   ...baseConfig,
   entry: "./app/index.js",
   plugins: [
-    ...(baseConfig.plugins || []),
+    ...(baseConfig.plugins
+      ? baseConfig.plugins.filter(
+          (plugin) => !(plugin instanceof HtmlWebpackPlugin)
+        )
+      : []),
     new HtmlWebpackPlugin({
       template: path.resolve("app/index.html"),
       filename: "index.html",
