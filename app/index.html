@@ -9,8 +9,7 @@
 		<meta name="robots" content="index, follow">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="stylesheet" href="https://unpkg.com/@fontsource/cinzel@latest/index.css">
 		<script src="https://cdn.tailwindcss.com"></script>
 		<script>
 			tailwind.config = {
@@ -50,6 +49,9 @@
 		<meta name="twitter:title" content="Lutheran Lectionary - Christ Lutheran Church, Manhattan, KS">
 		<meta name="twitter:description" content="Traditional Lutheran Lectionary Calendar - Historic One Year Lectionary with liturgical readings, festivals, and commemorations used in the LCMS and other Lutheran churches.">
 		<meta name="twitter:image" content="https://lectionary.christlutheranmanhattan.org/app/images/accordance-256.jpg">
+		<style>
+  body { font-family: 'Cinzel', serif !important; }
+</style>
 	</head>
 	<body>
 		<div id="top"></div>
@@ -119,5 +121,10 @@
     <p class="text-gray-500 mt-1">Lutheran Church—Missouri Synod (LCMS)</p>
   </div>
 </footer>
+		<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.body.classList.add('font-cinzel');
+  });
+</script>
 	</body>
 </html>
