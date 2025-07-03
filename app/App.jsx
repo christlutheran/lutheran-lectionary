@@ -1,4 +1,3 @@
-import { createRoot } from "react-dom/client";
 import { DateTime } from "luxon";
 import { Router, Switch, Route } from "wouter";
 import { useHashLocation } from "wouter/use-hash-location";
@@ -37,6 +36,4 @@ function App() {
   );
 }
 
-const container = document.getElementById("root");
-const root = createRoot(container);
-root.render(<App />);
+export default App;
