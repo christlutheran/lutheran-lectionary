@@ -1,0 +1,86 @@
+[
+  {
+    "type": 0,
+    "name": "Title of Week",
+    "is_reading": false,
+    "is_viewable": false
+  },
+  {
+    "type": 1,
+    "name": "Epistle",
+    "is_reading": true
+  },
+  {
+    "type": 2,
+    "name": "Gospel",
+    "is_reading": true
+  },
+  {
+    "type": 3,
+    "name": "Old Testament (TLH)",
+    "is_reading": true
+  },
+  {
+    "type": 18,
+    "name": "Collect (TLH)",
+    "is_reading": false
+  },
+  {
+    "type": 19,
+    "name": "Old Testament",
+    "is_reading": true
+  },
+  {
+    "type": 20,
+    "name": "Collect",
+    "is_reading": false
+  },
+  {
+    "type": 23,
+    "name": "Introit",
+    "is_reading": false
+  },
+  {
+    "type": 24,
+    "name": "Offertory",
+    "is_reading": false
+  },
+  {
+    "type": 25,
+    "name": "Color",
+    "is_reading": false,
+    "is_viewable": false
+  },
+  {
+    "type": 34,
+    "name": "Festival",
+    "is_reading": false,
+    "is_viewable": false
+  },
+  {
+    "type": 35,
+    "name": "Gradual",
+    "is_reading": false
+  },
+  {
+    "type": 36,
+    "name": "Verse",
+    "is_reading": false
+  },
+  {
+    "type": 37,
+    "name": "Commemoration",
+    "is_reading": false,
+    "is_viewable": false
+  },
+  {
+    "type": 38,
+    "name": "First Reading",
+    "is_reading": true
+  },
+  {
+    "type": 39,
+    "name": "Second Reading",
+    "is_reading": true
+  }
+]

@@ -1,0 +1,446 @@
+:root {
+  /* Primary color scheme */
+  --primary-bg-color: #ffffff;
+  --header-footer-bg: #5c2228;
+  --header-footer-text: #ffffff;
+  --column-heading-bg: #5c2228;
+  --column-heading-text: #ffffff;
+  --cell-border-color: #e5e7eb;
+  --today-border-color: #2196F3;
+  
+  /* Liturgical colors */
+  --liturgical-violet: #663399;
+  --liturgical-white: #2c2c2c;
+  --liturgical-green: #228b22;
+  --liturgical-red: #dc143c;
+  --liturgical-rose: #ff69b4;
+  --liturgical-black: #2c2c2c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'EB Garamond', 'Crimson Text', Georgia, serif;
+  background: #f5f5f0;
+  color: #374151;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Typography Classes */
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-garamond {
+  font-family: 'EB Garamond', serif;
+}
+
+.font-crimson {
+  font-family: 'Crimson Text', serif;
+}
+
+/* Liturgical Color Classes */
+.liturgical-violet {
+  color: var(--liturgical-violet);
+}
+
+.liturgical-white {
+  color: var(--liturgical-white);
+  font-weight: 600;
+}
+
+.liturgical-green {
+  color: var(--liturgical-green);
+}
+
+.liturgical-red {
+  color: var(--liturgical-red);
+}
+
+.liturgical-rose {
+  color: var(--liturgical-rose);
+}
+
+.liturgical-black {
+  color: var(--liturgical-black);
+}
+
+/* Border Color Classes */
+.border-liturgical-violet {
+  border-color: var(--liturgical-violet);
+}
+
+.border-liturgical-white {
+  border-color: var(--liturgical-white);
+}
+
+.border-liturgical-green {
+  border-color: var(--liturgical-green);
+}
+
+.border-liturgical-red {
+  border-color: var(--liturgical-red);
+}
+
+.border-liturgical-rose {
+  border-color: var(--liturgical-rose);
+}
+
+.border-liturgical-black {
+  border-color: var(--liturgical-black);
+}
+
+/* Background Color Classes */
+.bg-liturgical-violet {
+  background-color: rgba(102, 51, 153, 0.08);
+}
+
+.bg-liturgical-white {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.bg-liturgical-green {
+  background-color: rgba(34, 139, 34, 0.08);
+}
+
+.bg-liturgical-red {
+  background-color: rgba(220, 20, 60, 0.08);
+}
+
+.bg-liturgical-rose {
+  background-color: rgba(255, 105, 180, 0.08);
+}
+
+.bg-liturgical-black {
+  background-color: rgba(44, 44, 44, 0.08);
+}
+
+.bg-solid-liturgical-violet {
+  background-color: rgba(102, 51, 153);
+  color: #ffffff;
+}
+
+.bg-solid-liturgical-white {
+  background-color: #fcfcf7;
+  color: #333333;
+}
+
+.bg-solid-liturgical-green {
+  background-color: rgba(34, 139, 34);
+  color: #ffffff;
+}
+
+.bg-solid-liturgical-red {
+  background-color: rgba(220, 20, 60);
+  color: #ffffff;
+}
+
+.bg-solid-liturgical-rose {
+  background-color: rgba(255, 105, 180);
+  color: #ffffff;
+}
+
+.bg-solid-liturgical-black {
+  background-color: rgba(44, 44, 44);
+  color: #ffffff;
+}
+
+/* Title bar styling */
+.title-bar {
+  background: var(--header-footer-bg);
+  color: var(--header-footer-text);
+  border-bottom: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title-bar h1 {
+  color: var(--header-footer-text);
+  text-shadow: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Calendar specific styles */
+.calendar-container {
+  background: var(--primary-bg-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--cell-border-color);
+}
+
+.calendar-nav {
+  background: var(--header-footer-bg);
+  color: var(--header-footer-text);
+  border-radius: 8px 8px 0 0;
+  border-bottom: 1px solid var(--cell-border-color);
+}
+
+.calendar-nav a {
+  color: var(--header-footer-text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.3s ease;
+}
+
+.calendar-nav a:hover {
+  opacity: 0.8;
+}
+
+.calendar-nav h2 {
+  color: var(--header-footer-text);
+  font-weight: 600;
+}
+
+/* Calendar table styling */
+.calendar-table {
+  border-collapse: separate;
+  border-spacing: 2px;
+  background: var(--primary-bg-color);
+  width: 100%;
+}
+
+.calendar-table th {
+  background: var(--column-heading-bg);
+  color: var(--column-heading-text);
+  font-weight: 600;
+  border: none;
+  padding: 12px 8px;
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.calendar-table td {
+  background: #ffffff;
+  border: 1px solid var(--cell-border-color);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  vertical-align: top;
+  min-height: 140px;
+  padding: 4px;
+  width: 14.28%;
+}
+
+.calendar-table td:nth-child(even) {
+  background: #f5f5f5;
+}
+
+.calendar-table td:hover {
+  background: #f9fafb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-table td.today {
+  border: 2px solid var(--today-border-color);
+  box-shadow: 0 0 0 1px var(--today-border-color);
+}
+
+/* Day number styling */
+.day-number {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  text-align: center;
+  line-height: 1;
+}
+
+/* Propers styling */
+.proper-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.proper-reading {
+  font-size: 11px;
+  line-height: 1.3;
+  margin-bottom: 2px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.commemoration {
+  font-size: 12px;
+  font-style: italic;
+  color: #6b7280;
+  margin-top: 4px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* Day view styling */
+.day-view {
+  background: var(--primary-bg-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--cell-border-color);
+}
+
+.day-nav {
+  background: var(--header-footer-bg);
+  color: var(--header-footer-text);
+  border-radius: 8px 8px 0 0;
+  border-bottom: 1px solid var(--cell-border-color);
+}
+
+.day-nav a {
+  color: var(--header-footer-text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.3s ease;
+}
+
+.day-nav a:hover {
+  opacity: 0.8;
+}
+
+.proper-section {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--cell-border-color);
+  border-radius: 8px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.proper-section h2 {
+  margin: 0;
+  padding: 16px 24px;
+  font-size: 20px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--cell-border-color);
+}
+
+.proper-section h3 {
+  color: #374151;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 16px 0 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.proper-section h3 i {
+  color: #6b7280;
+  font-size: 16px;
+}
+
+.reading-link {
+  color: #5c2228;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.reading-link:hover {
+  color: #7c2d33;
+  text-decoration: underline;
+}
+
+.accordance-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-image: url('./images/accordance-64.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.accordance-icon:hover {
+  opacity: 1;
+}
+
+/* Footer styling */
+footer {
+  background: var(--header-footer-bg);
+  color: var(--header-footer-text);
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  border-top: none;
+}
+
+footer a {
+  color: var(--header-footer-text);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+footer a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .calendar-table th,
+  .calendar-table td {
+    padding: 4px 2px;
+    font-size: 11px;
+    min-height: 120px;
+  }
+  
+  .day-number {
+    font-size: 16px;
+  }
+  
+  .proper-title {
+    font-size: 11px;
+  }
+  
+  .proper-reading {
+    font-size: 10px;
+  }
+  
+  .commemoration {
+    font-size: 10px;
+  }
+  
+  .calendar-nav h2 {
+    font-size: 18px;
+  }
+  
+  .title-bar h1 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-table {
+    border-spacing: 1px;
+  }
+  
+  .calendar-table th,
+  .calendar-table td {
+    padding: 2px 1px;
+    min-height: 100px;
+  }
+  
+  .day-number {
+    font-size: 14px;
+  }
+  
+  .proper-title {
+    font-size: 10px;
+  }
+  
+  .proper-reading {
+    font-size: 9px;
+  }
+  
+  .commemoration {
+    font-size: 9px;
+  }
+}

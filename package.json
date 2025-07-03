@@ -1,0 +1,41 @@
+{
+  "name": "@stanlemon/lectionary",
+  "version": "1.1.22",
+  "description": "A calculator for the Western Christian church calendar.",
+  "keywords": [
+    "christian",
+    "lectionary",
+    "liturgy",
+    "lutheran",
+    "lutheranism"
+  ],
+  "author": "Stan Lemon <stanlemon@users.github.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:stanlemon/lectionary-js.git"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "start": "webpack serve",
+    "build": "NODE_ENV=production webpack",
+    "test": "jest",
+    "lint": "eslint .",
+    "lint:format": "eslint --fix ."
+  },
+  "type": "module",
+  "exports": "./lib/index.js",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.5.1",
+    "@stanlemon/webdev": "^0.2.39",
+    "luxon": "^3.6.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "wouter": "^3.7.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.0"
+  }
+}
