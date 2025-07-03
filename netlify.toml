@@ -4,3 +4,9 @@
 
 [build.environment]
   NODE_VERSION = "22.17.0"
+  PUBLIC_PATH = "/"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
