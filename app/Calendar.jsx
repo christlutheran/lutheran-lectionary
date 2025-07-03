@@ -69,7 +69,7 @@ export default class Calendar extends React.Component {
     window.document.title = `${this.getYearAndMonthLabel({
       year,
       month,
-    })} · Lutheran Lectionary`;
+    })} · Lutheran Lectionary - Christ Lutheran, Manhattan, KS`;
 
     const builder = new CalendarBuilder(year, month);
     return builder.build(loader);

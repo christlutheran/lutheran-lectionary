@@ -167,7 +167,7 @@ export default class Day extends React.Component {
     const yesterdayColorClass = this.getLiturgicalColorClass(yesterdayColor);
     const tomorrowColorClass = this.getLiturgicalColorClass(tomorrowColor);
 
-    document.title = `${title} · Lutheran Lectionary`;
+    document.title = `${title} · Lutheran Lectionary - Christ Lutheran, Manhattan, KS`;
 
     return (
       <div className="day-view mx-auto max-w-4xl my-8">

@@ -15,6 +15,16 @@
   --liturgical-red: #dc143c;
   --liturgical-rose: #ff69b4;
   --liturgical-black: #2c2c2c;
+
+  --color-gold: #D4AF37;
+  --color-deep-gold: #B4943E;
+  --color-red: #5c2228;
+  --color-purple: #4B0082;
+  --color-green: #355E3B;
+  --color-white: #FFFFFF;
+  --color-black: #1A1A1A;
+  --color-cream: #F5F5F0;
+  --color-burgundy: #800020;
 }
 
 * {
@@ -362,26 +372,7 @@ body {
   opacity: 1;
 }
 
-/* Footer styling */
-footer {
-  background: var(--header-footer-bg);
-  color: var(--header-footer-text);
-  text-align: center;
-  padding: 20px;
-  margin-top: 40px;
-  border-top: none;
-}
 
-footer a {
-  color: var(--header-footer-text);
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-footer a:hover {
-  opacity: 0.8;
-  text-decoration: underline;
-}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
