@@ -1,5 +1,5 @@
 {
-  "name": "@stanlemon/lectionary",
+  "name": "lutheran-lectionary",
   "version": "1.1.22",
   "description": "A calculator for the Western Christian church calendar.",
   "keywords": [
@@ -9,11 +9,10 @@
     "lutheran",
     "lutheranism"
   ],
-  "author": "Stan Lemon <stanlemon@users.github.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:stanlemon/lectionary-js.git"
+    "url": "git@github.com:christlutheran/lectionary-js.git"
   },
   "engines": {
     "node": ">=20.19.0"
