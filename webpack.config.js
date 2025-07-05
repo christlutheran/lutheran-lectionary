@@ -1,6 +1,7 @@
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import baseConfig from "@stanlemon/webdev/webpack.config.js";
 import path from "path";
+import CopyWebpackPlugin from "copy-webpack-plugin";
 
 export default {
   ...baseConfig,
@@ -14,6 +15,9 @@ export default {
     new HtmlWebpackPlugin({
       template: path.resolve("app/index.html"),
       filename: "index.html",
+    }),
+    new CopyWebpackPlugin({
+      patterns: [{ from: "app/public", to: "." }],
     }),
   ],
 };
