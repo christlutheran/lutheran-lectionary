@@ -1,6 +1,7 @@
 import * as React from "react";
 import { DateTime } from "luxon";
 import { Link } from "wouter";
+import { Helmet } from "react-helmet-async";
 
 import { Week } from "../lib/Week";
 import { KeyLoader } from "../lib/KeyLoader";
@@ -158,7 +159,6 @@ export default class Day extends React.Component {
       day.propers.lectionary,
       day.sunday.lectionary
     )?.toLowerCase();
-
     const colorClass = this.getLiturgicalColorClass(color);
 
     // Get liturgical colors for navigation dates
@@ -167,166 +167,188 @@ export default class Day extends React.Component {
     const yesterdayColorClass = this.getLiturgicalColorClass(yesterdayColor);
     const tomorrowColorClass = this.getLiturgicalColorClass(tomorrowColor);
 
-    document.title = `${title} · Lutheran Lectionary - Christ Lutheran, Manhattan, KS`;
+    // Build meta info for this day
+    const formattedDate = date.toFormat("yyyy-LL-dd");
+    const url = `https://lectionary.christlutheranmanhattan.org/${date.toFormat("yyyy/LL/dd")}/`;
+    const description = `Readings and propers for ${title} (${date.toLocaleString({ month: "long", day: "2-digit", year: "numeric" })}) in the Historic Lutheran Lectionary.`;
+    const image = "https://lectionary.christlutheranmanhattan.org/android-chrome-512x512.png";
 
     return (
-      <div className="day-view mx-auto max-w-4xl my-8">
-        {/* Navigation with liturgical colors */}
-        <nav className="day-nav p-4 flex items-center justify-between">
-          <Link 
-            to={`/${yesterday.toFormat("y/LL/dd")}/`}
-            className={`flex items-center gap-2 ${yesterdayColorClass} hover:opacity-80 transition-opacity`}
-          >
-            <i className="fas fa-chevron-left"></i>
-            <span className="font-garamond">
-              {yesterday.toFormat("LLLL d, y")}
-            </span>
-          </Link>
-          
-          <Link 
-            className="text-center font-cinzel font-semibold text-white hover:opacity-80 transition-opacity" 
-            to={`/${date.toFormat("y/LL")}/`}
-          >
-            <i className="fas fa-calendar-alt mr-2"></i>
-            {date.toFormat("LLLL")}
-          </Link>
-          
-          <Link 
-            to={`/${tomorrow.toFormat("y/LL/dd")}/`}
-            className={`flex items-center gap-2 ${tomorrowColorClass} hover:opacity-80 transition-opacity`}
-          >
-            <span className="font-garamond">
-              {tomorrow.toFormat("LLLL d, y")}
-            </span>
-            <i className="fas fa-chevron-right"></i>
-          </Link>
-        </nav>
-
-        <div className="p-6">
-          {/* Date and Title with liturgical color */}
-          <div className="text-center mb-8">
-            <h2 className={`font-cinzel text-3xl md:text-4xl font-bold mb-2 ${colorClass}`}>
-              <i className="fas fa-calendar-day mr-3"></i>
-              {date.toLocaleString({
-                month: "long",
-                day: "2-digit",
-                year: "numeric",
-              })}
-            </h2>
-            <h3 className={`font-garamond text-xl md:text-2xl ${colorClass}`}>
-              {title}
-            </h3>
-          </div>
-
-          {/* Table of Contents */}
-          <div className="mb-8">
+      <>
+        <Helmet>
+          <title>{`${title} · Lutheran Lectionary - Christ Lutheran, Manhattan, KS`}</title>
+          <meta name="description" content={description} />
+          <meta property="og:type" content="article" />
+          <meta property="og:url" content={url} />
+          <meta property="og:title" content={`${title} · Lutheran Lectionary - Christ Lutheran Church, Manhattan, KS`} />
+          <meta property="og:description" content={description} />
+          <meta property="og:image" content={image} />
+          <meta property="og:site_name" content="Christ Lutheran Church Manhattan, KS" />
+          <meta property="twitter:card" content="summary_large_image" />
+          <meta property="twitter:url" content={url} />
+          <meta property="twitter:title" content={`${title} · Lutheran Lectionary - Christ Lutheran Church, Manhattan, KS`} />
+          <meta property="twitter:description" content={description} />
+          <meta property="twitter:image" content={image} />
+          <link rel="canonical" href={url} />
+        </Helmet>
+        <div className="day-view mx-auto max-w-4xl my-8">
+          {/* Navigation with liturgical colors */}
+          <nav className="day-nav p-4 flex items-center justify-between">
+            <Link 
+              to={`/${yesterday.toFormat("y/LL/dd")}/`}
+              className={`flex items-center gap-2 ${yesterdayColorClass} hover:opacity-80 transition-opacity`}
+            >
+              <i className="fas fa-chevron-left"></i>
+              <span className="font-garamond">
+                {yesterday.toFormat("LLLL d, y")}
+              </span>
+            </Link>
             
+            <Link 
+              className="text-center font-cinzel font-semibold text-white hover:opacity-80 transition-opacity" 
+              to={`/${date.toFormat("y/LL")}/`}
+            >
+              <i className="fas fa-calendar-alt mr-2"></i>
+              {date.toFormat("LLLL")}
+            </Link>
+            
+            <Link 
+              to={`/${tomorrow.toFormat("y/LL/dd")}/`}
+              className={`flex items-center gap-2 ${tomorrowColorClass} hover:opacity-80 transition-opacity`}
+            >
+              <span className="font-garamond">
+                {tomorrow.toFormat("LLLL d, y")}
+              </span>
+              <i className="fas fa-chevron-right"></i>
+            </Link>
+          </nav>
+
+          <div className="p-6">
+            {/* Date and Title with liturgical color */}
+            <div className="text-center mb-8">
+              <h2 className={`font-cinzel text-3xl md:text-4xl font-bold mb-2 ${colorClass}`}>
+                <i className="fas fa-calendar-day mr-3"></i>
+                {date.toLocaleString({
+                  month: "long",
+                  day: "2-digit",
+                  year: "numeric",
+                })}
+              </h2>
+              <h3 className={`font-garamond text-xl md:text-2xl ${colorClass}`}>
+                {title}
+              </h3>
+            </div>
+
+            {/* Table of Contents */}
+            <div className="mb-8">
+              
+              {[day.propers.lectionary, day.propers.festivals, day.propers.daily]
+                .filter((p) => p.length > 0)
+                .map((propers, i) => (
+                  <div key={`propers-toc-${i}`} className="mb-4">
+                    <h5 className={`font-garamond text-base font-semibold mb-2 ${this.getLiturgicalColorClass(findColor(propers)?.toLowerCase())}`}>
+                      <i className="fas fa-cross mr-2"></i>
+                      {findProperByType(propers, 0)?.text}
+                    </h5>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 ml-4">
+                      {propers
+                        .filter(
+                          (proper) => typesById[proper.type]?.is_viewable ?? true
+                        )
+                        .map((proper, j) => (
+                          <button
+                            key={`propers-toc-${i}-${j}`}
+                            className="text-left p-2 rounded border border-gray-300 hover:bg-gray-50 transition-colors reading-link font-garamond"
+                            onClick={this.scrollToSection(i, proper.type)}
+                          >
+                            <i className={`${this.getReadingIcon(proper.type)} mr-2 text-sm`}></i>
+                            {typesById[proper.type].name}
+                            {typesById[proper.type].is_reading && (
+                              <span className="text-gray-600">: {proper.text}</span>
+                            )}
+                          </button>
+                        ))}
+                    </div>
+                  </div>
+                ))}
+            </div>
+
+            {/* Propers Sections */}
             {[day.propers.lectionary, day.propers.festivals, day.propers.daily]
               .filter((p) => p.length > 0)
               .map((propers, i) => (
-                <div key={`propers-toc-${i}`} className="mb-4">
-                  <h5 className={`font-garamond text-base font-semibold mb-2 ${this.getLiturgicalColorClass(findColor(propers)?.toLowerCase())}`}>
-                    <i className="fas fa-cross mr-2"></i>
+                <div key={`propers-${i}`} className="proper-section">
+                  <h2 className={`font-cinzel bg-solid-${this.getLiturgicalColorClass(findColor(propers)?.toLowerCase())}`}>
+                    <i className="fas fa-cross mr-3"></i>
                     {findProperByType(propers, 0)?.text}
-                  </h5>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 ml-4">
+                  </h2>
+                  
+                  <div className="p-6">
                     {propers
-                      .filter(
-                        (proper) => typesById[proper.type]?.is_viewable ?? true
-                      )
+                      .filter((proper) => typesById[proper.type]?.is_viewable ?? true)
                       .map((proper, j) => (
-                        <button
-                          key={`propers-toc-${i}-${j}`}
-                          className="text-left p-2 rounded border border-gray-300 hover:bg-gray-50 transition-colors reading-link font-garamond"
-                          onClick={this.scrollToSection(i, proper.type)}
+                        <div
+                          id={this.getSectionId(i, proper.type)}
+                          key={`propers-${i}-${j}`}
+                          className="mb-8 last:mb-0"
                         >
-                          <i className={`${this.getReadingIcon(proper.type)} mr-2 text-sm`}></i>
-                          {typesById[proper.type].name}
-                          {typesById[proper.type].is_reading && (
-                            <span className="text-gray-600">: {proper.text}</span>
+                          <h3 className="font-garamond">
+                            <i className={`${this.getReadingIcon(proper.type)} mr-2`}></i>
+                            {typesById[proper.type].name}
+
+                            {typesById[proper.type].is_reading && (
+                              <span className="ml-2">
+                                <span className="text-gray-500">·</span>
+                                <a
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  href={`https://www.biblegateway.com/passage/?search=${proper.text}&version=ESV`}
+                                  className="reading-link ml-2"
+                                >
+                                  {proper.text}
+                                  <i className="fas fa-external-link-alt ml-1 text-xs"></i>
+                                </a>
+                                <a
+                                  title="Open this reading using Accordance, if you don't have it check it out at http://accordancebible.com"
+                                  href={this.getAccordanceUrl(proper.text)}
+                                  className="ml-2"
+                                >
+                                  <i className="accordance-icon"></i>
+                                </a>
+                              </span>
+                            )}
+                          </h3>
+                          
+                          {!typesById[proper.type].is_reading && (
+                            <div
+                              className="mt-4 font-garamond text-gray-700 leading-relaxed"
+                              dangerouslySetInnerHTML={{
+                                __html: proper.text,
+                              }}
+                            />
                           )}
-                        </button>
+                          
+                          <div className="text-right mt-4">
+                            <button 
+                              className="reading-link text-sm font-garamond"
+                              onClick={this.handleScrollToTop}
+                            >
+                              <i className="fas fa-arrow-up mr-1"></i>
+                              Back to top
+                            </button>
+                          </div>
+                          
+                          {j < propers.filter((p) => typesById[p.type]?.is_viewable ?? true).length - 1 && (
+                            <hr className="mt-6 border-gray-300" />
+                          )}
+                        </div>
                       ))}
                   </div>
                 </div>
               ))}
           </div>
-
-          {/* Propers Sections */}
-          {[day.propers.lectionary, day.propers.festivals, day.propers.daily]
-            .filter((p) => p.length > 0)
-            .map((propers, i) => (
-              <div key={`propers-${i}`} className="proper-section">
-                <h2 className={`font-cinzel bg-solid-${this.getLiturgicalColorClass(findColor(propers)?.toLowerCase())}`}>
-                  <i className="fas fa-cross mr-3"></i>
-                  {findProperByType(propers, 0)?.text}
-                </h2>
-                
-                <div className="p-6">
-                  {propers
-                    .filter((proper) => typesById[proper.type]?.is_viewable ?? true)
-                    .map((proper, j) => (
-                      <div
-                        id={this.getSectionId(i, proper.type)}
-                        key={`propers-${i}-${j}`}
-                        className="mb-8 last:mb-0"
-                      >
-                        <h3 className="font-garamond">
-                          <i className={`${this.getReadingIcon(proper.type)} mr-2`}></i>
-                          {typesById[proper.type].name}
-
-                          {typesById[proper.type].is_reading && (
-                            <span className="ml-2">
-                              <span className="text-gray-500">·</span>
-                              <a
-                                target="_blank"
-                                rel="noreferrer"
-                                href={`https://www.biblegateway.com/passage/?search=${proper.text}&version=ESV`}
-                                className="reading-link ml-2"
-                              >
-                                {proper.text}
-                                <i className="fas fa-external-link-alt ml-1 text-xs"></i>
-                              </a>
-                              <a
-                                title="Open this reading using Accordance, if you don't have it check it out at http://accordancebible.com"
-                                href={this.getAccordanceUrl(proper.text)}
-                                className="ml-2"
-                              >
-                                <i className="accordance-icon"></i>
-                              </a>
-                            </span>
-                          )}
-                        </h3>
-                        
-                        {!typesById[proper.type].is_reading && (
-                          <div
-                            className="mt-4 font-garamond text-gray-700 leading-relaxed"
-                            dangerouslySetInnerHTML={{
-                              __html: proper.text,
-                            }}
-                          />
-                        )}
-                        
-                        <div className="text-right mt-4">
-                          <button 
-                            className="reading-link text-sm font-garamond"
-                            onClick={this.handleScrollToTop}
-                          >
-                            <i className="fas fa-arrow-up mr-1"></i>
-                            Back to top
-                          </button>
-                        </div>
-                        
-                        {j < propers.filter((p) => typesById[p.type]?.is_viewable ?? true).length - 1 && (
-                          <hr className="mt-6 border-gray-300" />
-                        )}
-                      </div>
-                    ))}
-                </div>
-              </div>
-            ))}
         </div>
-      </div>
+      </>
     );
   }
 }

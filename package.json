@@ -1,6 +1,6 @@
 {
   "name": "lutheran-lectionary",
-  "version": "1.1.22",
+  "version": "1.1.23",
   "description": "A calculator for the Western Christian church calendar.",
   "keywords": [
     "christian",
@@ -12,7 +12,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:christlutheran/lectionary-js.git"
+    "url": "git@github.com:christlutheran/lutheran-lectionary-js.git"
   },
   "engines": {
     "node": ">=20.19.0"
@@ -28,15 +28,30 @@
   "exports": "./lib/index.js",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.1",
-    "@stanlemon/webdev": "^0.2.39",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@tailwindcss/postcss": "^4.1.11",
     "luxon": "^3.6.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-helmet-async": "^2.0.5",
     "wouter": "^3.7.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/preset-env": "^7.28.0",
+    "@babel/preset-react": "^7.27.1",
     "@testing-library/react": "^16.3.0",
+    "autoprefixer": "^10.4.21",
+    "babel-loader": "^10.0.0",
     "copy-webpack-plugin": "^13.0.0",
-    "html-webpack-plugin": "^5.6.3"
+    "css-loader": "^6.10.0",
+    "html-webpack-plugin": "^5.6.3",
+    "postcss": "^8.5.6",
+    "postcss-loader": "^7.3.3",
+    "style-loader": "^3.3.4",
+    "tailwindcss": "^4.1.11",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
   }
 }

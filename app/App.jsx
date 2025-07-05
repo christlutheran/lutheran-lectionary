@@ -1,3 +1,4 @@
+import React from "react";
 import { DateTime } from "luxon";
 import { Router, Switch, Route } from "wouter";
 import { useHashLocation } from "wouter/use-hash-location";
@@ -5,34 +6,37 @@ import Calendar from "./Calendar";
 import Day from "./Day";
 import "./App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
   return (
-    <Router hook={useHashLocation}>
-      <Switch>
-        <Route exact path="/:year/:month/">
-          {({ month, year }) => <Calendar year={year} month={month} />}
-        </Route>
-        <Route exact path="/:year/:month/:day/">
-          {({ month, year, day }) => (
-            <Day year={year} month={month} day={day} />
-          )}
-        </Route>
-        <Route exact path="/today">
-          <Day
-            year={DateTime.local().year}
-            month={DateTime.local().month}
-            day={DateTime.local().day}
-          />
-        </Route>
-        <Route>
-          <Calendar
-            year={DateTime.local().year}
-            month={DateTime.local().month}
-          />
-        </Route>
-      </Switch>
-    </Router>
+    <HelmetProvider>
+      <Router hook={useHashLocation}>
+        <Switch>
+          <Route exact path="/:year/:month/">
+            {({ month, year }) => <Calendar year={year} month={month} />}
+          </Route>
+          <Route exact path="/:year/:month/:day/">
+            {({ month, year, day }) => (
+              <Day year={year} month={month} day={day} />
+            )}
+          </Route>
+          <Route exact path="/today">
+            <Day
+              year={DateTime.local().year}
+              month={DateTime.local().month}
+              day={DateTime.local().day}
+            />
+          </Route>
+          <Route>
+            <Calendar
+              year={DateTime.local().year}
+              month={DateTime.local().month}
+            />
+          </Route>
+        </Switch>
+      </Router>
+    </HelmetProvider>
   );
 }
 
